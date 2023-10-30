@@ -4,7 +4,7 @@ Import-Module ActiveDirectory
 $filePath = Import-Csv "C:\users.csv"
 $userPwd = "a password"
 $domain = "contoso.local"
-$uo = "OU=Users,DC=contoso,DC=local"
+$ou = "OU=Users,DC=contoso,DC=local"
 $blacklist = @("Administrator", "Guest")
 
 foreach ($user in $filePath) {
@@ -18,7 +18,7 @@ foreach ($user in $filePath) {
             "DisplayName" = $user.DisplayName
             "AccountPassword" = (ConvertTo-SecureString $userPwd -AsPlainText -Force)
             "Enabled" = $true
-            "Path" = $uo
+            "Path" = $ou
         }
         New-ADUser @params
         Write-Host "user $($user.Name) created !"

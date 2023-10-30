@@ -27,11 +27,11 @@ CSV files will be generated in the root of `C:\`
 
 In `src/import` you'll find scripts for importing Active Directory users and groups.
 
-**ImportADGroup.ps1 IS UNDER DEVELOPPEMENT**
-
 Drop the previously generated CSV files into the root of `C:\`.
 
-Edit the `ImportADUser.ps1` files to adapt the configuration to your environment.
+Edit the `ImportADUser.ps1` and `ImportADGroup.ps1` files to adapt the configuration to your environment.
+
+### ImportADUser
 
 ```ps
 $filePath = "The path to the CSV file."
@@ -41,8 +41,17 @@ $uo = "The UO in which to create users"
 $blacklist = "List of users not to be created"
 ```
 
+### ImportADGroup
+
+```ps
+$filePath = "The path to the CSV file."
+$uo = "The UO in which to create groups"
+$blacklist = "List of groups not to be created"
+```
+
 Once the configuration is complete, all you have to do is right-click and select "run with PowerShell" or run the following command in a PowerShell prompt:
 
 ```
 .\ImportADUser.ps1
+.\ImportADGroup.ps1
 ```
